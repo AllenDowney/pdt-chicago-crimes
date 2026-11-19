@@ -4,7 +4,8 @@ Usage:
     python build/build_records.py
 
 Reads build/slice.yaml and the sources in data/raw/<release>/ (sources.yaml).
-Writes metadata/releases/<release>/<table>/variables.jsonl and build/report.md.
+Writes metadata/releases/<release>/<table>/variables.jsonl,
+metadata/code_lists.jsonl and build/report.md.
 
 A release is a dated snapshot of the portal; see build/slice.yaml.
 
@@ -14,8 +15,10 @@ Where each field comes from (STANDARD.md §3):
 - source_location: the dataset's page, with the column's field name and Socrata id
 - storage_type: rule socrata_storage_type, from the column's Socrata type, and,
   for numbers, whether every value in the data is whole
-- values of crimes.iucr: the IUCR code list (dataset c7ck-438e), every code,
-  active or retired; labels by rule iucr_code_list_label
+- crimes.iucr's codes: the shared code list iucr-<release> in
+  metadata/code_lists.jsonl (STANDARD.md §4.5), from the IUCR code list
+  (dataset c7ck-438e): every code, with retired from its ACTIVE column, its
+  other columns as attributes, and labels by rule iucr_code_list_label
 - availability (crimes): the portal's own non-null count of each column, by
   year (a SODA aggregate query)
 - measure, variable_type: build/slice.yaml (hand)
@@ -77,6 +80,34 @@ def socrata_storage_type(column, cells):
     return None
 
 
+def iucr_list_id(release):
+    return f"iucr-{release}"
+
+
+def iucr_code_list(spec, release, src):
+    """The IUCR codes as a shared code list (STANDARD.md §4.5): every code, active or retired."""
+    t = spec["tables"]["iucr"]
+    _, rows = read_rows(ROOT / src[t["data"]]["path"])
+    described = {c["fieldName"]: c.get("description") or c["name"] for c in socrata_columns(ROOT / src[t["metadata"]]["path"])}
+    columns = ["primary_description", "secondary_description", "index_code"]
+    codes = []
+    for r in rows:
+        code = {"code": r["iucr"], "label": iucr_code_list_label(r), "kind": "valid",
+                "attributes": {c: r[c] for c in columns}}
+        if r["active"] != "true":
+            code["retired"] = True
+        codes.append(code)
+    return {"id": iucr_list_id(release),
+            "label": "Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes",
+            "description": "The IUCR codes as of the snapshot, active or retired (the list's ACTIVE column).",
+            "codes": codes, "columns": {c: described.get(c, c) for c in columns},
+            "origin": {"origin": "publisher", "source": t["data"],
+                       "note": "Codes, attributes and ACTIVE from the list's rows. Labels by rule "
+                               f"iucr_code_list_label {RULE_VERSION}: PRIMARY DESCRIPTION and SECONDARY "
+                               "DESCRIPTION, joined by ': '."},
+            "source_location": {"source": t["metadata"], "url": f"{PORTAL}/d/{t['socrata_id']}"}}
+
+
 def iucr_code_list_label(row):
     """Rule iucr_code_list_label: the code list's PRIMARY DESCRIPTION and SECONDARY DESCRIPTION,
     each verbatim, joined by ": " (HOMICIDE: FIRST DEGREE MURDER). The crimes table carries the
@@ -131,12 +162,10 @@ def build_table(table, spec, release, src, hand):
             fields["variable_type"] = hand
 
         if table == "crimes" and name == "iucr":
-            record["values"] = [{"code": r["iucr"], "label": iucr_code_list_label(r), "kind": "valid"} for r in codes]
-            retired = [r["iucr"] for r in codes if r["active"] != "true"]
-            fields["values"] = rule("iucr_code_list_label", spec["tables"]["iucr"]["data"],
-                                    f"Every code in the IUCR code list ({len(codes)}), active or retired; "
-                                    f"retired (ACTIVE false): {', '.join(retired) or 'none'}. Label: PRIMARY "
-                                    "DESCRIPTION and SECONDARY DESCRIPTION, joined by ': '.")
+            record["code_list"] = iucr_list_id(release)
+            fields["code_list"] = {"origin": "publisher", "source": t["metadata"],
+                                   "note": "The column's description: \"See the list of IUCR codes at "
+                                           "https://data.cityofchicago.org/d/c7ck-438e.\""}
             used = {x for x in cells if x}
             if unlisted := sorted(used - {r["iucr"] for r in codes}):
                 report.append(f"- `crimes/iucr`: codes in the {spec['data_year']} data not in the code list: {unlisted}")
@@ -177,6 +206,11 @@ def main():
         write_jsonl(META / "releases" / release / table / "variables.jsonl", records)
         by_table[table] = records
         report += notes
+    code_list = iucr_code_list(spec, release, src)
+    write_jsonl(META / "code_lists.jsonl", [code_list])
+    retired = [c["code"] for c in code_list["codes"] if c.get("retired")]
+    report.append(f"- code list `{code_list['id']}`: {len(code_list['codes'])} codes, {len(retired)} retired "
+                  f"({', '.join(retired)})")
     write_report(release, by_table, report)
     print(", ".join(f"{t}: {len(r)}" for t, r in by_table.items()) + " records; see build/report.md")
 
