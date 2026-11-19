@@ -16,6 +16,10 @@ Reported incidents of crime in the City of Chicago since 2001, from the Chicago 
 
 The City of Chicago's Terms of Use are at https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html, and the portal labels the dataset's license "See Terms of Use". [`dataset.yaml`](dataset.yaml) quotes them. They haven't been reviewed by a person yet, so every term is `unknown` and nothing built from this repo may ship (STANDARD.md §8). The repo has no git remote, and the data stays in `data/`, which is gitignored.
 
+The Terms of Use require this notice on any application or other derivative use of the data (`terms.notice` in `dataset.yaml`):
+
+> This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one’s own risk.
+
 ## How to get the data
 
 Every file comes from the portal's API: [`sources.yaml`](sources.yaml) lists each URL, where it goes in `data/raw/<release>/`, and its checksum on the snapshot date.

@@ -3,6 +3,7 @@
 standard_version: "0.1"
 id: chicago-crimes
 title: "Crimes - 2001 to Present (City of Chicago)"
+kind: portal   # STANDARD.md §2.1: survey, administrative or portal
 publisher:
   name: "City of Chicago, Chicago Police Department"
   url: "https://data.cityofchicago.org/"
@@ -28,6 +29,7 @@ terms:
     be used for comparison purposes over time", and prohibits attempts "to
     derive specific addresses". Nothing addresses LLM processing. The portal
     labels the license "See Terms of Use".
+  notice: "This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one\u2019s own risk."
   data: unknown
   documentation: unknown
   metadata: unknown
@@ -54,6 +56,7 @@ releases:
           rows for 2024; the records describe the whole table.
         sources: [crimes-metadata, crimes-2024, crimes-counts-by-year]
         key: [id]
+        data_waves: ["2024"]   # the data file holds the 2024 rows; the records describe 2001 on
         references:
           - columns: [iucr]
             table: iucr

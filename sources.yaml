@@ -21,6 +21,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 51276
   sha256: 4c4dc51fad2427da0d0231637e342e607061114196fe91d3f9ba83b47f74ebd9
+  live: true
 - id: crimes-2024
   title: 'Crimes - 2001 to Present: the rows with year 2024, by the SODA API, ordered by id'
   kind: data
@@ -34,6 +35,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 74905506
   sha256: 89a7c9c1177765f28cf15a774dd281e40930e5469f9627893a7e893284e9f3b5
+  live: true
 - id: crimes-counts-by-year
   title: 'Crimes - 2001 to Present: non-null count of every column by year, by the SODA API'
   kind: data
@@ -47,6 +49,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 12191
   sha256: 2c78e4f26365089bcef0e559c8f637057efc42242fa2f0121bf3be9c690a5cb3
+  live: true
 - id: iucr-metadata
   title: 'Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes: Socrata view metadata'
   kind: codebook
@@ -62,6 +65,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 11606
   sha256: c5bfe16a87788ba45d34e9fcc09416a9187755016a526389f6e01f76f9848eb6
+  live: true
 - id: iucr-codes
   title: 'Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes: the rows, by the SODA API'
   kind: data
@@ -76,6 +80,7 @@ sources:
   bytes: 28534
   sha256: 03156b0b45e8a751a6bf97dc68748648b55f476d752a2585a77c51680f89ccdc
   note: The iucr table's data file, and the source of crimes.iucr's codes and labels.
+  live: true
 - id: change-note-location-0908
   title: 'Portal change note: Crimes With No Known Location - 9/8/2026 (story g94p-vvmz)'
   kind: release_notes
@@ -91,6 +96,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 2974
   sha256: 30ceb1d73d3cbca5cba761adf2bf02ac258e3ee34bda5eb5cfcde5730b1426ce
+  live: true
 - id: change-note-location-1001
   title: 'Portal change note: Problem: Crime Datasets Missing Location Values - 10/1/2026 - Mostly Resolved (story ragt-xajb)'
   kind: release_notes
@@ -106,6 +112,7 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 3052
   sha256: 65cf1bc3abf816097ce890cbdd184973cc53e31c4ff11f5f7f0578d48f56c45b
+  live: true
 - id: terms
   title: 'City of Chicago data portal: Terms of Use (data disclaimer)'
   kind: other
@@ -119,3 +126,4 @@ sources:
   fetched_on: '2026-11-19'
   bytes: 54823
   sha256: df35f477a50220cf62d8bf11acf49f1b822d5768c97988afed3245d2a715a340
+  live: true
