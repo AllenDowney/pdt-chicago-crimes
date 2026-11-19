@@ -17,7 +17,10 @@ citation: "Chicago Police Department. Crimes - 2001 to Present. City of Chicago 
 terms:
   url: "https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html"
   summary: >
-    Not yet reviewed by a person. The City of Chicago's Terms of Use (data
+    Allen Downey decided on 2026-11-19 that data, documentation and metadata
+    ship and that LLM processing is allowed, with the City's disclaimer as the
+    notice. Users should heed the description's warning that the data "should
+    not be used for comparison purposes over time". The City of Chicago's Terms of Use (data
     disclaimer) say the City "voluntarily provides the data on this website as
     a service to the public", "as is", and may require a user "to terminate any
     and all display, distribution or other use" of the data. Anyone offering
@@ -30,10 +33,12 @@ terms:
     derive specific addresses". Nothing addresses LLM processing. The portal
     labels the license "See Terms of Use".
   notice: "This site provides applications using data that has been modified for use from its original source, www.cityofchicago.org, the official website of the City of Chicago. The City of Chicago makes no claims as to the content, accuracy, timeliness, or completeness of any of the data provided at this site. The data provided at this site is subject to change at any time. It is understood that the data provided at this site is being used at one\u2019s own risk."
-  data: unknown
-  documentation: unknown
-  metadata: unknown
-  llm_processing: unknown
+  data: ship
+  documentation: ship
+  metadata: ship
+  llm_processing: allowed
+  reviewed_by: Allen Downey
+  reviewed_on: "2026-11-19"
 dimensions:
   wave:
     label: year the incident occurred

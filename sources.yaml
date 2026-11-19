@@ -16,7 +16,7 @@ sources:
   - '20261119'
   documents:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 51276
@@ -30,7 +30,7 @@ sources:
   path: data/raw/20261119/crimes-2024.csv
   releases:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 74905506
@@ -44,7 +44,7 @@ sources:
   path: data/raw/20261119/crimes-counts-by-year.json
   releases:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 12191
@@ -60,7 +60,7 @@ sources:
   - '20261119'
   documents:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 11606
@@ -74,7 +74,7 @@ sources:
   path: data/raw/20261119/iucr-codes.csv
   releases:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 28534
@@ -91,7 +91,7 @@ sources:
   - '20261119'
   documents:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 2974
@@ -107,7 +107,7 @@ sources:
   - '20261119'
   documents:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 3052
@@ -121,7 +121,7 @@ sources:
   path: data/raw/20261119/terms-of-use.html
   releases:
   - '20261119'
-  redistribution: unknown
+  redistribution: ship
   acquisition: automated
   fetched_on: '2026-11-19'
   bytes: 54823
