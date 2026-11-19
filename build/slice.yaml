@@ -5,7 +5,9 @@
 # has no name for it, so its date): the Socrata metadata, the IUCR code list,
 # the counts by year, and the rows for data_year, all fetched on that date.
 release: "20261119"
-author: Allen Downey
+# Who made the hand judgments below (measure, variable_type): the agent and its task
+# (STANDARD.md §3, origin hand).
+author: Claude (PublicDataToolkit Task 33)
 date: "2026-11-19"
 data_year: 2024
 
