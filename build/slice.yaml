@@ -1,0 +1,54 @@
+# The tables to build, and facts the sources don't give (origin: hand).
+# Edited by hand; read by build/build_records.py.
+#
+# A release is a dated snapshot of the portal (STANDARD.md §2.1: the publisher
+# has no name for it, so its date): the Socrata metadata, the IUCR code list,
+# the counts by year, and the rows for data_year, all fetched on that date.
+release: "20261119"
+author: Allen Downey
+date: "2026-11-19"
+data_year: 2024
+
+tables:
+  crimes:
+    socrata_id: ijzp-q8t2
+    metadata: crimes-metadata
+    data: crimes-2024
+    counts: crimes-counts-by-year
+    measure:
+      id: identifier
+      case_number: identifier
+      date: date
+      block: text
+      iucr: categorical
+      primary_type: categorical
+      description: categorical
+      location_description: categorical
+      arrest: categorical
+      domestic: categorical
+      beat: categorical
+      district: categorical
+      ward: categorical
+      community_area: categorical
+      fbi_code: categorical
+      x_coordinate: continuous
+      y_coordinate: continuous
+      year: date
+      updated_on: date
+      latitude: continuous
+      longitude: continuous
+      location: text
+    variable_type:
+      id: administrative
+      updated_on: administrative
+      location: computed
+  iucr:
+    socrata_id: c7ck-438e
+    metadata: iucr-metadata
+    data: iucr-codes
+    measure:
+      iucr: identifier
+      primary_description: categorical
+      secondary_description: categorical
+      index_code: categorical
+      active: categorical

@@ -1,0 +1,76 @@
+{
+ "pdt_version": "0.1.0",
+ "inputs_sha256": "526c1fa13c8898cd0fbf4335f7ab51c6d27fdd5034e45ebb6a21cafc13bfa82d",
+ "dataset": "chicago-crimes",
+ "max_tokens": 20000,
+ "shards": [
+  {
+   "kind": "table",
+   "title": "Release 20261119, table crimes",
+   "basis": "every variable in the table",
+   "full_records": [
+    "metadata/releases/20261119/crimes/variables.jsonl"
+   ],
+   "completeness": "complete",
+   "filter": {
+    "release": "20261119",
+    "table": "crimes"
+   },
+   "releases": [
+    "20261119"
+   ],
+   "n_in_scope": 22,
+   "rule_versions": {},
+   "notes": [],
+   "count": 22,
+   "files": [
+    {
+     "path": "shards/table/20261119-crimes.jsonl",
+     "form": "jsonl",
+     "variables": 22,
+     "tokens": 13802
+    },
+    {
+     "path": "shards/table/20261119-crimes.txt",
+     "form": "txt",
+     "variables": 22,
+     "tokens": 1118
+    }
+   ]
+  },
+  {
+   "kind": "table",
+   "title": "Release 20261119, table iucr",
+   "basis": "every variable in the table",
+   "full_records": [
+    "metadata/releases/20261119/iucr/variables.jsonl"
+   ],
+   "completeness": "complete",
+   "filter": {
+    "release": "20261119",
+    "table": "iucr"
+   },
+   "releases": [
+    "20261119"
+   ],
+   "n_in_scope": 5,
+   "rule_versions": {},
+   "notes": [],
+   "count": 5,
+   "files": [
+    {
+     "path": "shards/table/20261119-iucr.jsonl",
+     "form": "jsonl",
+     "variables": 5,
+     "tokens": 706
+    },
+    {
+     "path": "shards/table/20261119-iucr.txt",
+     "form": "txt",
+     "variables": 5,
+     "tokens": 223
+    }
+   ]
+  }
+ ]
+}

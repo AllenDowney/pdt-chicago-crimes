@@ -1,0 +1,121 @@
+# Every file this repo depends on (STANDARD.md §2.2): data files, codebooks,
+# questionnaires, release notes, errata and terms pages, upstream packages.
+# Schema: PublicDataToolkit/schema/sources.schema.json. Edited by hand.
+#
+# Once a file is fetched, fill fetched_on, bytes and sha256 (pdt check C6).
+# An upstream package also needs `version` (a tag or commit), and documentation
+# says which releases it `documents`.
+sources:
+- id: crimes-metadata
+  title: 'Crimes - 2001 to Present: Socrata view metadata (columns, descriptions, types)'
+  kind: codebook
+  format: json
+  url: https://data.cityofchicago.org/api/views/ijzp-q8t2.json
+  path: data/raw/20261119/ijzp-q8t2.json
+  releases:
+  - '20261119'
+  documents:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 51276
+  sha256: 4c4dc51fad2427da0d0231637e342e607061114196fe91d3f9ba83b47f74ebd9
+- id: crimes-2024
+  title: 'Crimes - 2001 to Present: the rows with year 2024, by the SODA API, ordered by id'
+  kind: data
+  format: csv
+  url: https://data.cityofchicago.org/resource/ijzp-q8t2.csv?$where=year=2024&$order=id&$limit=2000000
+  path: data/raw/20261119/crimes-2024.csv
+  releases:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 74905506
+  sha256: 89a7c9c1177765f28cf15a774dd281e40930e5469f9627893a7e893284e9f3b5
+- id: crimes-counts-by-year
+  title: 'Crimes - 2001 to Present: non-null count of every column by year, by the SODA API'
+  kind: data
+  format: json
+  url: https://data.cityofchicago.org/resource/ijzp-q8t2.json?$select=year,count(id)+as+n_id,count(case_number)+as+n_case_number,count(date)+as+n_date,count(block)+as+n_block,count(iucr)+as+n_iucr,count(primary_type)+as+n_primary_type,count(description)+as+n_description,count(location_description)+as+n_location_description,count(arrest)+as+n_arrest,count(domestic)+as+n_domestic,count(beat)+as+n_beat,count(district)+as+n_district,count(ward)+as+n_ward,count(community_area)+as+n_community_area,count(fbi_code)+as+n_fbi_code,count(x_coordinate)+as+n_x_coordinate,count(y_coordinate)+as+n_y_coordinate,count(updated_on)+as+n_updated_on,count(latitude)+as+n_latitude,count(longitude)+as+n_longitude&$group=year&$order=year&$limit=1000
+  path: data/raw/20261119/crimes-counts-by-year.json
+  releases:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 12191
+  sha256: 2c78e4f26365089bcef0e559c8f637057efc42242fa2f0121bf3be9c690a5cb3
+- id: iucr-metadata
+  title: 'Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes: Socrata view metadata'
+  kind: codebook
+  format: json
+  url: https://data.cityofchicago.org/api/views/c7ck-438e.json
+  path: data/raw/20261119/c7ck-438e.json
+  releases:
+  - '20261119'
+  documents:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 11606
+  sha256: c5bfe16a87788ba45d34e9fcc09416a9187755016a526389f6e01f76f9848eb6
+- id: iucr-codes
+  title: 'Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes: the rows, by the SODA API'
+  kind: data
+  format: csv
+  url: https://data.cityofchicago.org/resource/c7ck-438e.csv?$order=iucr&$limit=5000
+  path: data/raw/20261119/iucr-codes.csv
+  releases:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 28534
+  sha256: 03156b0b45e8a751a6bf97dc68748648b55f476d752a2585a77c51680f89ccdc
+  note: The iucr table's data file, and the source of crimes.iucr's codes and labels.
+- id: change-note-location-0908
+  title: 'Portal change note: Crimes With No Known Location - 9/8/2026 (story g94p-vvmz)'
+  kind: release_notes
+  format: json
+  url: https://data.cityofchicago.org/api/views/g94p-vvmz.json
+  path: data/raw/20261119/story-g94p-vvmz.json
+  releases:
+  - '20261119'
+  documents:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 2974
+  sha256: 30ceb1d73d3cbca5cba761adf2bf02ac258e3ee34bda5eb5cfcde5730b1426ce
+- id: change-note-location-1001
+  title: 'Portal change note: Problem: Crime Datasets Missing Location Values - 10/1/2026 - Mostly Resolved (story ragt-xajb)'
+  kind: release_notes
+  format: json
+  url: https://data.cityofchicago.org/api/views/ragt-xajb.json
+  path: data/raw/20261119/story-ragt-xajb.json
+  releases:
+  - '20261119'
+  documents:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 3052
+  sha256: 65cf1bc3abf816097ce890cbdd184973cc53e31c4ff11f5f7f0578d48f56c45b
+- id: terms
+  title: 'City of Chicago data portal: Terms of Use (data disclaimer)'
+  kind: other
+  format: html
+  url: https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html
+  path: data/raw/20261119/terms-of-use.html
+  releases:
+  - '20261119'
+  redistribution: unknown
+  acquisition: automated
+  fetched_on: '2026-11-19'
+  bytes: 54823
+  sha256: df35f477a50220cf62d8bf11acf49f1b822d5768c97988afed3245d2a715a340

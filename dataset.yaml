@@ -1,0 +1,66 @@
+# The dataset, its terms and its releases (STANDARD.md §2.1, §8).
+# Schema: PublicDataToolkit/schema/dataset.schema.json. Edited by hand.
+standard_version: "0.1"
+id: chicago-crimes
+title: "Crimes - 2001 to Present (City of Chicago)"
+publisher:
+  name: "City of Chicago, Chicago Police Department"
+  url: "https://data.cityofchicago.org/"
+url: "https://data.cityofchicago.org/d/ijzp-q8t2"
+description: "Reported incidents of crime in the City of Chicago since 2001, from the Chicago Police Department CLEAR system, published on the Chicago Data Portal (Socrata) and updated daily. Not a survey: one row per incident."
+citation: "Chicago Police Department. Crimes - 2001 to Present. City of Chicago Data Portal, dataset ijzp-q8t2. https://data.cityofchicago.org/d/ijzp-q8t2"
+# Terms are decided by a person, never by an agent or this template (STANDARD.md §8).
+# Quote what the terms pages say in `summary`, then have a person set each field
+# to ship or build-only and fill reviewed_by and reviewed_on. `unknown` blocks
+# shipping anything that depends on it.
+terms:
+  url: "https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html"
+  summary: >
+    Not yet reviewed by a person. The City of Chicago's Terms of Use (data
+    disclaimer) say the City "voluntarily provides the data on this website as
+    a service to the public", "as is", and may require a user "to terminate any
+    and all display, distribution or other use" of the data. Anyone offering
+    "any software application, or other secondary or derivative application
+    using data supplied at this website" must include the City's disclaimer
+    (quoted on that page) and comply with any additional terms of the agency
+    providing the data. Users indemnify the City. The dataset's own description
+    adds the Chicago Police Department's disclaimer, says the data "should not
+    be used for comparison purposes over time", and prohibits attempts "to
+    derive specific addresses". Nothing addresses LLM processing. The portal
+    labels the license "See Terms of Use".
+  data: unknown
+  documentation: unknown
+  metadata: unknown
+  llm_processing: unknown
+dimensions:
+  wave:
+    label: year the incident occurred
+    column: year
+releases:
+  # A release is a dated snapshot of the portal: the publisher has no versions,
+  # and the table changes daily (see build/slice.yaml and README.md).
+  - id: "20261119"
+    label: "Portal snapshot of 2026-11-19 (metadata, the IUCR code list, and the 2024 rows)"
+    date: "2026-11-19"
+    status: current
+    sources: [crimes-metadata, crimes-2024, crimes-counts-by-year, iucr-metadata, iucr-codes,
+              change-note-location-0908, change-note-location-1001, terms]
+    tables:
+      - id: crimes
+        label: Crimes - 2001 to Present (dataset ijzp-q8t2)
+        description: >
+          One row per reported incident, except homicides, which have one row
+          per victim, so case_number repeats. The snapshot's data file holds the
+          rows for 2024; the records describe the whole table.
+        sources: [crimes-metadata, crimes-2024, crimes-counts-by-year]
+        key: [id]
+        references:
+          - columns: [iucr]
+            table: iucr
+      - id: iucr
+        label: Chicago Police Department - Illinois Uniform Crime Reporting (IUCR) Codes (dataset c7ck-438e)
+        description: >
+          The IUCR code list, one row per code, active or retired. Published as
+          its own dataset.
+        sources: [iucr-metadata, iucr-codes]
+        key: [iucr]

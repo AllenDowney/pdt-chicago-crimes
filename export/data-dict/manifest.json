@@ -1,0 +1,20 @@
+{
+ "pdt_version": "0.1.0",
+ "inputs_sha256": "526c1fa13c8898cd0fbf4335f7ab51c6d27fdd5034e45ebb6a21cafc13bfa82d",
+ "dataset": "chicago-crimes",
+ "spec": "0.1.0",
+ "files": [
+  "20261119.yaml",
+  "LOSSES.md"
+ ],
+ "losses": {
+  "20261119": {
+   "release_version": 1,
+   "variables": 27,
+   "untyped": 22,
+   "availability": 546,
+   "provenance_fields": 102,
+   "open_ranges": 4
+  }
+ }
+}

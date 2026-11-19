@@ -1,0 +1,23 @@
+# Changes here will be overwritten by Copier; do not edit by hand.
+_commit: v0.1.0
+_src_path: /home/downey/PublicDataToolkit
+citation: Chicago Police Department. Crimes - 2001 to Present. City of Chicago Data
+    Portal, dataset ijzp-q8t2. https://data.cityofchicago.org/d/ijzp-q8t2
+dataset_id: chicago-crimes
+dataset_url: https://data.cityofchicago.org/d/ijzp-q8t2
+description: 'Reported incidents of crime in the City of Chicago since 2001, from
+    the Chicago Police Department CLEAR system, published on the Chicago Data Portal
+    (Socrata) and updated daily. Not a survey: one row per incident.'
+form_label: ''
+publisher_name: City of Chicago, Chicago Police Department
+publisher_url: https://data.cityofchicago.org/
+release_id: '20261119'
+release_label: Portal snapshot of 2026-11-19 (metadata and the 2024 rows)
+source_format: json
+source_id: chicago-crimes-metadata
+source_kind: codebook
+source_url: https://data.cityofchicago.org/api/views/ijzp-q8t2.json
+standard_version: '0.1'
+terms_url: https://www.chicago.gov/city/en/narr/foia/data_disclaimer.html
+title: Crimes - 2001 to Present (City of Chicago)
+wave_label: year
