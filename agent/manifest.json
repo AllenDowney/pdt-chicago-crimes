@@ -1,7 +1,7 @@
 {
- "pdt_version": "0.1.0",
+ "pdt_version": "0.2.0",
  "inputs_sha256": "e2da2936298380fe5816069c080bc177c1e513d52660a33c033b2bbed896bfbb",
- "generator_sha256": "feed02ead6fb62dd3ce5164d7c62ab1bc77fefdf83e06a7164b95afa87aba2cf",
+ "generator_sha256": "5bd837fcfa83e3bb04c37847b6e1662f093b130380ce5a4ef1067334b670c30d",
  "dataset": "chicago-crimes",
  "max_tokens": 20000,
  "shards": [
