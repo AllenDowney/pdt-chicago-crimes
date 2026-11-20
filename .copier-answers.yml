@@ -1,8 +1,9 @@
 # Changes here will be overwritten by Copier; do not edit by hand.
-_commit: v0.1.0
+_commit: v0.2.0
 _src_path: /home/downey/PublicDataToolkit
 citation: Chicago Police Department. Crimes - 2001 to Present. City of Chicago Data
     Portal, dataset ijzp-q8t2. https://data.cityofchicago.org/d/ijzp-q8t2
+copyright_holder: Allen Downey
 dataset_id: chicago-crimes
 dataset_url: https://data.cityofchicago.org/d/ijzp-q8t2
 description: 'Reported incidents of crime in the City of Chicago since 2001, from
